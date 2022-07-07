@@ -18,7 +18,7 @@ public class MyPipelineLambdaStack extends Stack {
         super(scope, id, props);
 
         Function.Builder.create(this, "LambdaFunction")
-                .runtime(Runtime.NODEJS_12_X)
+                .runtime(Runtime.NODEJS_14_X)
                 .handler("index.handler")
                 .code(Code.fromInline(
                         "exports.handler = async (event, context) {\n" +
