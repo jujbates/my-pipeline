@@ -1,5 +1,6 @@
 package com.myorg;
 
+import software.amazon.awscdk.services.lambda.Code;
 import software.constructs.Construct;
 import software.amazon.awscdk.Stack;
 import software.amazon.awscdk.StackProps;
@@ -19,7 +20,10 @@ public class MyPipelineLambdaStack extends Stack {
         Function.Builder.create(this, "LambdaFunction")
                 .runtime(Runtime.NODEJS_12_X)
                 .handler("index.handler")
-                .code(new InlineCode("exports.handler = _ => 'Hello, CDK';"))
+                .code(Code.fromInline(
+                        "exports.handler = async (event, context) {\n" +
+                                "    context.succeed('hello world');\n" +
+                                "};"))
                 .build();
 
     }
