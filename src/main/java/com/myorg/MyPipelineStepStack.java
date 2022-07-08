@@ -25,7 +25,7 @@ public class MyPipelineStepStack extends Stack {
                 .runtime(Runtime.NODEJS_14_X)
                 .handler("index.handler")
                 .code(Code.fromInline(
-                        "exports.handler = async (event, context) {\n" +
+                        "exports.handler = async function(event, context) {\n" +
                                 "    context.succeed('hello world');\n" +
                                 "};"))
                 .timeout(Duration.seconds(25))
