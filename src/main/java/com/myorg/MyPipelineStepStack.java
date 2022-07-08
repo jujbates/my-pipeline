@@ -26,7 +26,7 @@ public class MyPipelineStepStack extends Stack {
                 .handler("index.handler")
                 .code(Code.fromInline(
                         "exports.handler = async function(event, context) {\n" +
-                                "    context.succeed('hello world');\n" +
+                                "    context.succeed('hello world!');\n" +
                                 "};"))
                 .timeout(Duration.seconds(25))
                 .build();
