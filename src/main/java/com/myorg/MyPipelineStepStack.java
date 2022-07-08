@@ -32,6 +32,19 @@ public class MyPipelineStepStack extends Stack {
                 .build();
 
 
+//        Function functionOne = new Function(this, "FunctionOne", FunctionProps.builder()
+//                .runtime(Runtime.JAVA_11)
+//                .code(Code.fromAsset("../software/", AssetOptions.builder()
+//                        .bundling(builderOptions
+//                                .command(functionOnePackagingInstructions)
+//                                .build())
+//                        .build()))
+//                .handler("helloworld.App")
+//                .memorySize(1024)
+//                .timeout(Duration.seconds(10))
+////                .logRetention(RetentionDays.ONE_WEEK)
+//                .build());
+
         StateMachine stateMachine = StateMachine.Builder.create(this, "MyStateMachine")
                 .definition(LambdaInvoke.Builder.create(this, "MyLambdaTask")
                         .lambdaFunction(helloFunction)
