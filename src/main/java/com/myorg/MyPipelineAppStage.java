@@ -13,7 +13,7 @@ public class MyPipelineAppStage extends Stage {
     public MyPipelineAppStage(final Construct scope, final String id, final StageProps props) {
         super(scope, id, props);
 
-        Stack StepStack = new MyPipelineStepStack(this, "LambdaStack");
+        Stack StepStack = new MyPipelineStepStack(this, "Test-This-Part-LambdaStack");
     }
 
 }

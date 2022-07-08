@@ -25,7 +25,7 @@ public class MyPipelineStack extends Stack {
                         .build())
                 .build();
 
-        pipeline.addStage(new MyPipelineAppStage(this, "test", StageProps.builder()
+        pipeline.addStage(new MyPipelineAppStage(this, "Test", StageProps.builder()
                 .env(Environment.builder()
                         .account("413048945805")
                         .region("us-west-2")
