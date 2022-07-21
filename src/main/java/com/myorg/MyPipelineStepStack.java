@@ -40,6 +40,8 @@ public class MyPipelineStepStack extends Stack {
 
 
 
+
+
 //
 //        List<String> helloWorldPackagingInstructions = Arrays.asList(
 //                "/bin/sh",
@@ -49,7 +51,7 @@ public class MyPipelineStepStack extends Stack {
 //                        "&& cp /asset-input/HelloWorld/target/helloworld.jar /asset-output/"
 //        );
 
-//
+////
 //        Function helloWorldFunction = new Function(this, "HelloWorld", FunctionProps.builder()
 //                .runtime(Runtime.JAVA_11)
 //                .code(Code.fromAsset("../lambdas/"))
@@ -58,6 +60,31 @@ public class MyPipelineStepStack extends Stack {
 //                .timeout(Duration.seconds(10))
 ////                .logRetention(RetentionDays.ONE_WEEK)
 //                .build());
+
+
+
+
+//        new lambda.Function(this, 'MyFunction', {
+//                runtime: lambda.Runtime.PYTHON_3_7,
+//                handler: 'app.lambda_handler',
+//                code: lambda.Code.fromAsset('./my_function'),
+//    });
+//    }
+
+        Function functionOne = new Function(this, "FunctionOne", FunctionProps.builder()
+                .runtime(Runtime.JAVA_11)
+                .code(Code.fromAsset("../lambdas/HWTest/", AssetOptions.builder()
+
+//                        .bundling(builderOptions
+//                                .command(functionOnePackagingInstructions)
+//                                .build())
+                        .build()))
+                .handler("helloworld.App")
+//                .memorySize(1024)
+//                .timeout(Duration.seconds(10))
+//                .logRetention(RetentionDays.ONE_WEEK)
+                .build());
+
 
         StateMachine stateMachine = StateMachine.Builder.create(this, "MyStateMachine")
                 .definition(LambdaInvoke.Builder.create(this, "MyLambdaTask")
