@@ -42,10 +42,8 @@ public class MyPipelineStepStack extends Stack {
 
         Function helloWorldFunction = new Function(this, "helloWorldFunction", FunctionProps.builder()
                 .runtime(Runtime.JAVA_11)
-                .code(Code.fromAsset("lambdas/HWTest/", AssetOptions.builder()
-                        .build()))
+                .code(Code.fromAsset("lambdas/HWTest/", AssetOptions.builder().build()))
                 .handler("helloworld.App")
-
                 .build());
 
 
