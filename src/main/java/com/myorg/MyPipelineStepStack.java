@@ -26,63 +26,26 @@ public class MyPipelineStepStack extends Stack {
     public MyPipelineStepStack(final Construct scope, final String id, final StackProps props) {
         super(scope, id, props);
 
-
-        Function helloWorldFunction = Function.Builder.create(this, "MyLambdaFunction")
-
-                .runtime(Runtime.NODEJS_14_X)
-                .handler("index.handler")
-                .code(Code.fromInline(
-                        "exports.handler = async function(event, context) {\n" +
-                                "    context.succeed('hello world!');\n" +
-                                "};"))
-                .timeout(Duration.seconds(25))
-                .build();
-
-
-
-
-
 //
-//        List<String> helloWorldPackagingInstructions = Arrays.asList(
-//                "/bin/sh",
-//                "-c",
-//                "cd HelloWorld " +
-//                        "&& mvn clean install " +
-//                        "&& cp /asset-input/HelloWorld/target/helloworld.jar /asset-output/"
-//        );
-
-////
-//        Function helloWorldFunction = new Function(this, "HelloWorld", FunctionProps.builder()
-//                .runtime(Runtime.JAVA_11)
-//                .code(Code.fromAsset("../lambdas/"))
-//                .handler("helloworld.App")
-//                .memorySize(1024)
-//                .timeout(Duration.seconds(10))
-////                .logRetention(RetentionDays.ONE_WEEK)
-//                .build());
+//        Function helloWorldFunction = Function.Builder.create(this, "MyLambdaFunction")
+//
+//                .runtime(Runtime.NODEJS_14_X)
+//                .handler("index.handler")
+//                .code(Code.fromInline(
+//                        "exports.handler = async function(event, context) {\n" +
+//                                "    context.succeed('hello world!');\n" +
+//                                "};"))
+//                .timeout(Duration.seconds(25))
+//                .build();
 
 
 
-
-//        new lambda.Function(this, 'MyFunction', {
-//                runtime: lambda.Runtime.PYTHON_3_7,
-//                handler: 'app.lambda_handler',
-//                code: lambda.Code.fromAsset('./my_function'),
-//    });
-//    }
-
-        Function functionOne = new Function(this, "FunctionOne", FunctionProps.builder()
+        Function helloWorldFunction = new Function(this, "helloWorldFunction", FunctionProps.builder()
                 .runtime(Runtime.JAVA_11)
-                .code(Code.fromAsset("../lambdas/HWTest/", AssetOptions.builder()
-
-//                        .bundling(builderOptions
-//                                .command(functionOnePackagingInstructions)
-//                                .build())
+                .code(Code.fromAsset("lambdas/HWTest/", AssetOptions.builder()
                         .build()))
                 .handler("helloworld.App")
-//                .memorySize(1024)
-//                .timeout(Duration.seconds(10))
-//                .logRetention(RetentionDays.ONE_WEEK)
+
                 .build());
 
 
