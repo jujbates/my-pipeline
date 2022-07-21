@@ -11,3 +11,7 @@ target
 .cdk.staging
 cdk.out
 
+
+.DS_Store
+.aws-sam/
+src/.DS_Store

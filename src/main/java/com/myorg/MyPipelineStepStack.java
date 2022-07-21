@@ -37,7 +37,9 @@ public class MyPipelineStepStack extends Stack {
                                 "};"))
                 .timeout(Duration.seconds(25))
                 .build();
-//
+
+
+
 //
 //        List<String> helloWorldPackagingInstructions = Arrays.asList(
 //                "/bin/sh",
@@ -47,7 +49,7 @@ public class MyPipelineStepStack extends Stack {
 //                        "&& cp /asset-input/HelloWorld/target/helloworld.jar /asset-output/"
 //        );
 
-
+//
 //        Function helloWorldFunction = new Function(this, "HelloWorld", FunctionProps.builder()
 //                .runtime(Runtime.JAVA_11)
 //                .code(Code.fromAsset("../lambdas/"))
