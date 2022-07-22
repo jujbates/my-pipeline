@@ -31,9 +31,10 @@ public class MyPipelineStepStack extends Stack {
         List<String> helloWorldFunctionPackagingInstructions = Arrays.asList(
                 "/bin/sh",
                 "-c",
-                "cd lambdas/HWTest " +
-                        "&& mvn clean install " +
-                        "&& cp /asset-input/lambdas/HWTest/target/helloWorldFunction.jar /asset-output/"
+
+                "cd HelloWorldFunction " +
+                "&& mvn clean install " +
+                "&& cp /asset-input/HelloWorldFunction/target/HelloWorld-1.0.jar /asset-output/"
         );
 
         BundlingOptions.Builder builderOptions = BundlingOptions.builder()
