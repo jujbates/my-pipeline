@@ -34,8 +34,11 @@ public class MyPipelineStepStack extends Stack {
                 "-c",
 
                 "cd HelloWorldFunction " +
-                "&& mvn -X clean " +
-                "&& cp /asset-input/HelloWorldFunction/target/HelloWorld-1.0.jar /asset-output/"
+
+                "&& echo 'test echo here' "
+//                "&& mvn -X clean " +
+
+//                "&& cp /asset-input/HelloWorldFunction/target/HelloWorld-1.0.jar /asset-output/"
         );
 
 
