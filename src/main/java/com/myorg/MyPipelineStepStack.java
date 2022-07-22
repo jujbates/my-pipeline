@@ -5,6 +5,7 @@ import java.util.List;
 
 import software.amazon.awscdk.*;
 import software.amazon.awscdk.services.lambda.Code;
+import software.amazon.awscdk.services.logs.RetentionDays;
 import software.amazon.awscdk.services.stepfunctions.StateMachine;
 import software.amazon.awscdk.services.stepfunctions.Succeed;
 import software.amazon.awscdk.services.stepfunctions.tasks.LambdaInvoke;
@@ -37,19 +38,19 @@ public class MyPipelineStepStack extends Stack {
                 "&& cp /asset-input/HelloWorldFunction/target/HelloWorld-1.0.jar /asset-output/"
         );
 
+
         BundlingOptions.Builder builderOptions = BundlingOptions.builder()
                 .command(helloWorldFunctionPackagingInstructions)
                 .image(Runtime.JAVA_11.getBundlingImage())
-                .volumes(singletonList(
-                        // Mount local .m2 repo to avoid download all the dependencies again inside the container
-                        DockerVolume.builder()
-                                .hostPath(System.getProperty("user.home") + "/.m2/")
-                                .containerPath("/root/.m2/")
-                                .build()
-                ))
+//                .volumes(singletonList(
+//                        // Mount local .m2 repo to avoid download all the dependencies again inside the container
+//                        DockerVolume.builder()
+//                                .hostPath(System.getProperty("user.home") + "/.m2/")
+//                                .containerPath("/root/.m2/")
+//                                .build()
+//                ))
                 .user("root")
                 .outputType(ARCHIVED);
-
 
 
         Function helloWorldFunction = new Function(this, "helloWorldFunction", FunctionProps.builder()
@@ -60,6 +61,9 @@ public class MyPipelineStepStack extends Stack {
                                 .build())
                         .build()))
                 .handler("helloworld.App")
+                .memorySize(1024)
+                .timeout(Duration.seconds(10))
+                .logRetention(RetentionDays.ONE_WEEK)
                 .build());
 
 
